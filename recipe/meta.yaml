@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pycatflow-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pycatflow-{{ version }}.tar.gz
   sha256: 3ef8d3abbd7857fad298c22a2b9f11a2fa4ac7a9250f993eeab2da349cfb60e7
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - drawsvg <2.0
     - matplotlib-base <3.9
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -30,6 +30,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/bumatic/PyCatFlow
