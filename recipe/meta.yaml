@@ -20,8 +20,8 @@ requirements:
     - python {{ python_min }}
     - setuptools
   run:
-    - drawsvg <2.0
-    - matplotlib-base <3.9
+    - drawsvg >=2.0
+    - matplotlib-base
     - python >={{ python_min }}
 
 test:
